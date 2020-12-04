@@ -43,13 +43,13 @@ A step by step series of examples that tell you how to get a development env run
 Clone this repo
 
 ```
-git clone https://github.com/ChandlerKlein/MedForms.git
+git clone https://github.com/C94/MedForms.git
 ```
 
-Open spikes/MedFormsUI in Android Studio
+Open the Application folder in Android Studio
 
 ```
-Open an existing Android Studio project → spikes/MedFormsUI
+Open an existing Android Studio project → Application/
 ```
 
 Build the project and run on your device
