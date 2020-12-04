@@ -1,0 +1,40 @@
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.2'
+    }
+}
+
+subprojects {
+    afterEvaluate { proj ->
+        if (proj.hasProperty('android')) {
+            android {
+                ndkVersion '16.1.4479499'
+            }
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    ext {
+        // configure versions used by dependencies to harmonize and update easily across all components
+
+        // Android SDK
+        compileSdkVersion = 29
+        minSdkVersion = 29
+        targetSdkVersion = 29
+
+        // Android libraries
+        appcompatVersion = '1.2.0'
+    }
+}
+

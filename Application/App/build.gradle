@@ -1,0 +1,134 @@
+import org.apache.commons.io.FileUtils
+import org.apache.commons.io.filefilter.FileFilterUtils
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion project.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
+
+        applicationId 'com.myscript.iink.getstarted'
+        versionCode 1410
+        versionName '1.4.1'
+
+        vectorDrawables.useSupportLibrary true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE.md'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude("META-INF/*.kotlin_module")
+    }
+}
+
+dependencies {
+
+    //Docx4j
+    implementation files('lib/awt-bastardised-17v8.jar')
+    //might be needed...
+    implementation files('lib/slf4j-android-1.7.30.jar')
+    implementation files('lib/bea.jar')
+    implementation 'org.docx4j:docx4j-JAXB-ReferenceImpl:8.2.3'
+    implementation files('lib/stax2-api-3.1.1.jar')
+    implementation files('lib/stax-api-1.0.1.jar')
+
+    //template
+    implementation 'com.girish.library.buildformer:buildformer:0.9.4'
+
+    //server transfer
+    implementation 'com.jcraft:jsch:0.1.55'
+
+    //camera
+    def camerax_version = "1.0.0-beta11"
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+    implementation "androidx.camera:camera-view:1.0.0-alpha18"
+
+    //ui
+    implementation 'com.google.zxing:core:3.3.0'
+
+    implementation 'com.itextpdf:itextg:5.5.10'
+
+    implementation 'org.eclipse.birt.runtime.3_7_1:org.apache.xerces:2.9.0'
+
+    implementation "com.google.code.gson:gson:2.8.5"
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation "androidx.appcompat:appcompat:${project.ext.appcompatVersion}"
+    implementation project(':UIReferenceImplementation')
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'androidx.security:security-crypto:1.0.0-alpha02'
+}
+
+task DownloadAndExtractAssets(type: Copy) {
+    def sourceUrls = ['https://s3-us-west-2.amazonaws.com/iink/assets/1.4.0/myscript-iink-recognition-diagram.zip',
+                      'https://s3-us-west-2.amazonaws.com/iink/assets/1.4.0/myscript-iink-recognition-raw-content.zip',
+                      'https://s3-us-west-2.amazonaws.com/iink/assets/1.4.0/myscript-iink-recognition-math.zip',
+                      'https://s3-us-west-2.amazonaws.com/iink/assets/1.4.0/myscript-iink-recognition-text-en_US.zip']
+    def targetDir = new File(projectDir, "src/main/assets/")
+    def diagramConf = new File(targetDir, "conf/diagram.conf")
+    def rawContentConf = new File(targetDir, "conf/raw-content.conf")
+    def mathConf = new File(targetDir, "conf/math.conf")
+    def textConf = new File(targetDir, "conf/en_US.conf")
+
+    if (!diagramConf.exists() || !rawContentConf.exists() || !mathConf.exists() || !textConf.exists()) {
+        def tmpAssetsDir = new File(projectDir, "tmp-assets/")
+        def zipDir = new File(tmpAssetsDir, "zips")
+
+        if (!tmpAssetsDir.isDirectory())
+            tmpAssetsDir.mkdirs()
+
+        if (!zipDir.isDirectory())
+            zipDir.mkdirs()
+
+        sourceUrls.each { sourceUrl ->
+            ant.get(src: sourceUrl, dest: zipDir.getPath())
+        }
+
+        File[] zipFiles = FileUtils.listFiles(zipDir, FileFilterUtils.suffixFileFilter("zip"), FileFilterUtils.trueFileFilter())
+        zipFiles.each { File zipFile ->
+            from zipTree(zipFile)
+            into tmpAssetsDir
+        }
+    }
+}
+
+task CopyAssets(type: Copy, dependsOn: DownloadAndExtractAssets) {
+    def targetDir = new File(projectDir, "src/main/assets/")
+    def diagramConf = new File(targetDir, "conf/diagram.conf")
+    def rawContentConf = new File(targetDir, "conf/raw-content.conf")
+    def mathConf = new File(targetDir, "conf/math.conf")
+    def textConf = new File(targetDir, "conf/en_US.conf")
+
+    if (!diagramConf.exists() || !rawContentConf.exists() || !mathConf.exists() || !textConf.exists()) {
+        def tmpAssetsDir = new File(projectDir, "tmp-assets/")
+
+        if (!tmpAssetsDir.isDirectory())
+            tmpAssetsDir.mkdirs()
+
+        def recognitionAssetDir = new File(tmpAssetsDir, "recognition-assets/")
+
+        println "Copying downloaded assets from $recognitionAssetDir to $targetDir"
+        from recognitionAssetDir
+        into targetDir
+
+        doLast {
+            tmpAssetsDir.deleteDir()
+        }
+    }
+}
+
+preBuild.dependsOn(CopyAssets)

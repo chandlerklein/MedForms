@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App name -->
+    <string name="app_name" translatable="false">MedForms</string>
+
+    <string name="menu_undo">Undo</string>
+    <string name="menu_redo">Redo</string>
+    <string name="menu_clear">Clear</string>
+    <string name="menu_convert">Convert</string>
+    <string name="inputMode_forcePen">Pen</string>
+    <string name="inputMode_forceTouch">Touch</string>
+    <string name="inputMode_auto">Auto</string>
+    <string name="start_consultation_form">Start Consultation Form</string>
+    <string name="configuration">Configuration</string>
+    <string name="logo">logo</string>
+    <string name="import_json_template_from">Import JSON template from</string>
+    <string name="import_docx_template_from">Import DOCX template from</string>
+    <string name="file_path">File Path</string>
+    <string name="export_documents_to">Export documents to</string>
+    <string name="ssh_key">SSH Key</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="warning">Warning</string>
+    <string name="ip_address">IP Address</string>
+    <string name="port_number">Port Number</string>
+    <string name="example_ip">192.168.1.1</string>
+    <string name="example_port">22</string>
+    <string name="example_key">AAAAB3NzaC1yc2EAAAADAQABAAACAQCrsh…</string>
+    <string name="username">Username</string>
+    <string name="documentation">Documentation</string>
+    <string name="back">Back</string>
+    <string name="western_michigan_university_senior_design_project_2020">Western Michigan University Senior Design Project</string>
+    <string name="garrett_ruffner">Garrett Ruffner</string>
+    <string name="chandler_klein">Chandler Klein</string>
+    <string name="december_2020">December 2020</string>
+    <string name="export">Export</string>
+    <string name="transfer_files">Transfer Files</string>
+    <string name="local_files">Local Files</string>
+    <string name="server_files">Server Files</string>
+    <string name="template_file_name">internalTemplateFile</string>
+    <string name="docx_template_file_name">docxInternalTemplateFile</string>
+    <string name="password">Password</string>
+    <string name="use_qr_code_reader">Use QR Code Reader</string>
+
+</resources>

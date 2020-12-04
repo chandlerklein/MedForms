@@ -1,0 +1,70 @@
+{
+  "views": [
+    {
+      "type": "textView",
+      "text": "An example of a textView! This is what you would put a prompt in. textSize is set to 20",
+      "textSize": 20
+    },
+    {
+      "type": "editText",
+      "description": "Here's an editText you can fill in the blank with anything you want.",
+      "mode": 2,
+      "singleLine": true
+    },
+    {
+      "type": "editText",
+      "description": "Here's another editText text with singleLine set to false",
+      "mode": 2,
+      "singleLine": false
+    },
+    {
+      "type": "editText",
+      "description": "Here's an editText with a hint. rather than text above it.",
+      "mode": 1,
+      "singleLine": true
+    },
+    {
+        "type": "radioGroupRatings",
+        "description": "radioGroupRatings",
+        "minRatings": 1,
+        "inStepsOf": 1,
+        "numberOfRatings": 10
+      },
+      {
+        "type": "checkboxGroup",
+        "description": "Here is a checkboxGroup",
+        "options": [
+          "You can have",
+          "as many check boxes",
+          "as you would like",
+          "asdfasdfasdf"
+        ]
+      },
+      {
+        "type": "textView",
+        "text": "This is a textView but, the line below is a sectionBreak",
+        "textSize": 20
+      },
+      {
+        "type": "sectionBreak"
+      },
+      {
+        "type": "dropDownList",
+        "description": "Here is a dropDownList",
+        "options": [
+          "This will take up less page space",
+          "more options",
+          "even more options"
+        ]
+      },
+      {
+          "type": "radioGroup",
+          "description": "radioGroup - only one option can be choosen",
+          "options": [
+            "option 1",
+            "option 2",
+            "option 3"
+          ]
+        }
+      ]
+  }

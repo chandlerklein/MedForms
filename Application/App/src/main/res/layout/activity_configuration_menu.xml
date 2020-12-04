@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConfigurationMenuActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutConfig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtViewConfiguration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="@string/configuration"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="@dimen/button_margin_other"
+        android:backgroundTint="@color/green"
+        android:text="@string/save"
+        android:textSize="@dimen/button_text_size"
+        app:icon="@drawable/ic_save"
+        app:layout_constraintBottom_toTopOf="@+id/btnCancel"
+        app:layout_constraintEnd_toEndOf="@+id/btnCancel"
+        app:layout_constraintStart_toStartOf="@+id/btnCancel" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/bottom_button_margin"
+        android:backgroundTint="@color/red"
+        android:text="@string/cancel"
+        android:textSize="@dimen/button_text_size"
+        app:icon="@drawable/ic_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="50dp"
+        android:fadeScrollbars="false"
+        app:layout_constraintBottom_toTopOf="@id/btnSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutConfig">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtImport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/import_json_template_from"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTxtTemplate"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/file_path"
+                android:inputType="textLongMessage" />
+
+            <TextView
+                android:id="@+id/txtImportdocx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/import_docx_template_from"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTxtdocxTemplate"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/file_path"
+                android:inputType="textLongMessage" />
+
+            <TextView
+                android:id="@+id/txtExport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/export_documents_to"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTxtExport"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/file_path"
+                android:inputType="textLongMessage" />
+
+            <TextView
+                android:id="@+id/txtIp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/ip_address"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTxtIp"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/example_ip"
+                android:inputType="textLongMessage" />
+
+            <TextView
+                android:id="@+id/txtPort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/port_number"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTxtPort"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/example_port"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/txtUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/username"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTxtUsername"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/username"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/txtPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/password"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTxtPassword"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/txtSsh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/ssh_key"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTxtSsh"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/example_key"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/btnQr"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#BBDEFB"
+                android:text="@string/use_qr_code_reader" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

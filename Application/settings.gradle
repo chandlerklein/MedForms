@@ -1,0 +1,5 @@
+rootProject.name = 'com.myscript.interactive-ink'
+
+include ':App', ':UIReferenceImplementation'
+project(':App').dir = new File(settingsDir, 'App')
+project(':UIReferenceImplementation').dir = new File(settingsDir, 'UIReferenceImplementation')

@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "views": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "const": "textView"
+              },
+              "text": {
+                "type": "string",
+                "minLength": 1
+              },
+              "textSize": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "text",
+              "textSize"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "const": "editText"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "mode": {
+                "type": "integer"
+              },
+              "singleLine": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "description",
+              "mode",
+              "singleLine"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "enum": [
+                  "checkboxGroup",
+                  "radioGroup",
+                  "dropDownList"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "options": {
+                "type": "array"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "description",
+              "options"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "const": "radioGroupRatings"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minRatings": {
+                "type": "integer"
+              },
+              "inStepsOf": {
+                "type": "integer"
+              },
+              "numberOfRatings": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "description",
+              "minRatings",
+              "inStepsOf",
+              "numberOfRatings"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "const": "sectionBreak"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "views"
+  ]
+}
