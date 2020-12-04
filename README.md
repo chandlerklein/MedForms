@@ -68,9 +68,9 @@ You're done!
 
 ## Authors
 
-- **Chandler Klein** - [C94](https://github.com/C94)
+- **[Chandler Klein](https://github.com/C94)** — ck@chandlerklein.com
 
-- **Garrett Ruffner** - [xorplanet](https://github.com/xorplanet)
+- **[Garrett Ruffner](https://github.com/xorplanet)**
 
 ## License
 
